@@ -7,9 +7,9 @@ public class Main {
 
         final int POP_SIZE = 100;
         final int GEN = 100;
-        final double PM = 0.01;
+        final double PM = 0.03;
         final double PX = 0.7;
-        final int TOUR = 5;
+        final int TOUR = 8;
         String filePath = "input/had20.dat.txt";
 
         long startTime = System.currentTimeMillis();
