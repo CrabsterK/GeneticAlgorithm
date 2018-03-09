@@ -47,7 +47,6 @@ public class Person {
 
 
     private static Set<Integer> findDuplicates(List<Integer> listContainingDuplicates) {
-
         final Set<Integer> setToReturn = new HashSet<Integer>();
         final Set<Integer> set1 = new HashSet<Integer>();
 
@@ -60,7 +59,6 @@ public class Person {
     }
 
     private static Set<Integer> findPotential(List<Integer> listContainingDuplicates) {
-
         final Set<Integer> setToReturn = new HashSet<Integer>(getPossibleGenList(listContainingDuplicates.size()));
         final Set<Integer> set1 = new HashSet<Integer>();
 
