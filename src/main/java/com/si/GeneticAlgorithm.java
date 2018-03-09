@@ -1,7 +1,6 @@
 package com.si;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -27,6 +26,39 @@ public class GeneticAlgorithm {
             }
         }
         return selectedTour.get(indexOfBest);
+    }
+
+    public Person rouletteSelect(ArrayList <Person> pop, int[][] distanceMatrix, int[][] flowsMatrix) {
+        int popSize = pop.size();
+        double totalSum = 0;
+        for(int i = 0; i < popSize; i++){
+            totalSum += (1000)/(pop.get(i).checkValue(distanceMatrix, flowsMatrix));
+        }
+
+        Random rn = new Random();
+        double randomChoice = rn.nextDouble() * totalSum;
+
+        int actualId = 0;
+        double sum = 0;
+        while (actualId < popSize && totalSum < randomChoice) {
+            sum += (1000)/(pop.get(actualId).checkValue(distanceMatrix, flowsMatrix));
+            actualId++;
+        }
+        return pop.get(actualId);
+    }
+
+    public Person randomSelect(ArrayList <Person> pop) {
+        int popSize = pop.size();
+        Random rn = new Random();
+        int randomIndex = rn.nextInt(popSize);
+        return pop.get(randomIndex);
+    }
+
+    public Person randomSelect(ArrayList <Person> pop, int[][] distanceMatrix, int[][] flowsMatrix) {
+        int popSize = pop.size();
+        Random rn = new Random();
+        int randomIndex = rn.nextInt(popSize);
+        return pop.get(randomIndex);
     }
 
 
