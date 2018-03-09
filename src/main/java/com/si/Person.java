@@ -8,7 +8,14 @@ import java.util.Set;
 public class Person {
     private List <Integer> genotype;
 
+    public Person() {
+    }
+
     public Person(List genotype) {
+        this.genotype = genotype;
+    }
+    
+    public void setGenotype(List<Integer> genotype) {
         this.genotype = genotype;
     }
 
