@@ -70,6 +70,18 @@ public class Population {
         return best;
     }
 
+    public double getAvgStdDeviationin(int [][] matrixDist, int [][] matrixFlow, int avg){
+        double sum = 0;
+        double sumN = 0;
+        double result = 0;
+        for(int i = 1; i < POP_SIZE; i++){
+            sum += (population.get(i).checkValue(matrixDist, matrixFlow)-avg) * (population.get(i).checkValue(matrixDist, matrixFlow)-avg);
+        }
+        sumN = sum/POP_SIZE;
+        result = Math.sqrt(sumN);
+        return result;
+    }
+
     public int getWorstValue(int [][] matrixDist, int [][] matrixFlow){
         int worst = population.get(0).checkValue(matrixDist, matrixFlow);
         int actualValue;
