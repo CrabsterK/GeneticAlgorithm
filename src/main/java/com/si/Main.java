@@ -34,8 +34,10 @@ public class Main {
         for(int currentGeneration = 0; currentGeneration < GEN; currentGeneration++) {
             Population tempPopulation = new Population(POP_SIZE, PERSON_SIZE);
             for (int i = 0; i < POP_SIZE; i++) {
-                Person tourSelection = ga.tourSelect(population.getPopulation(), TOUR, matrixDist, matrixFlow);
-                tempPopulation.addPerson(tourSelection);
+                Person selected = ga.tourSelect(population.getPopulation(), TOUR, matrixDist, matrixFlow);
+                //Person selected = ga.randomSelect(population.getPopulation());
+                //Person selected = ga.rouletteSelect(population.getPopulation(), matrixDist, matrixFlow);
+                tempPopulation.addPerson(selected);
             }
             population = tempPopulation;
 
