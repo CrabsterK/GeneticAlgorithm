@@ -28,7 +28,7 @@ public class Population {
     }
 
     public void initialize(){
-        population = initializePopulation(POP_SIZE, PERSON_SIZE, getPossibleGenList(PERSON_SIZE));
+        population = initializePopulation(POP_SIZE);
     }
 
     public void addPerson(Person person){
@@ -43,19 +43,24 @@ public class Population {
         return possibleGenns;
     }
 
-    private ArrayList initializePopulation(int POP_SIZE, int PERSON_SIZE, ArrayList possibleGennsList) {
+    private ArrayList initializePopulation(int POP_SIZE) {
         ArrayList <Person> populationLocal = new ArrayList<Person>();
         Person person;
         for (int row = 0; row < POP_SIZE; row++) {// make preson
-            ArrayList genotype = new ArrayList();
-            for (int col = 0; col < PERSON_SIZE; col++) {//make gen array
-                genotype.add((Integer) possibleGennsList.get(col));
-            }
-            person = new Person(genotype);
+            person = new Person(createRandomGenotype());
             populationLocal.add(person);
-            Collections.shuffle(possibleGennsList);
         }
         return populationLocal;
+    }
+
+    public ArrayList createRandomGenotype(){
+        ArrayList genotype = new ArrayList();
+        ArrayList possibleGennsList = getPossibleGenList(PERSON_SIZE);
+        Collections.shuffle(possibleGennsList);
+        for (int col = 0; col < PERSON_SIZE; col++) {//make gen array
+            genotype.add((Integer) possibleGennsList.get(col));
+        }
+        return genotype;
     }
 
     public int getBestValue(int [][] matrixDist, int [][] matrixFlow){
