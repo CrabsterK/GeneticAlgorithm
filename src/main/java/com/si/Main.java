@@ -10,7 +10,7 @@ public class Main {
         final double PM = 0.03;
         final double PX = 0.7;
         final int TOUR = 8;
-        String filePath = "input/had20.dat.txt";
+        String filePath = "input/had12.dat.txt";
 
         long startTime = System.currentTimeMillis();
 
@@ -54,6 +54,14 @@ public class Main {
             data.addPopulationData(currentGeneration, bestVal, worstVal, avgVal);
         }
 
+
+        //INITIAL DATA FACTORY
+        /*int bestVal = population.getBestValue(matrixDist, matrixFlow);
+        int worstVal = population.getWorstValue(matrixDist, matrixFlow);
+        int avgVal = population.getAverageValue(matrixDist, matrixFlow);
+        data.addPopulationData(0, bestVal, worstVal, avgVal);
+        System.out.println("OS: " + population.getAvgStdDeviationin(matrixDist, matrixFlow, avgVal));
+*/
 
         if(data.generateFile()){
             System.out.println("DATA GENERATED SUCCESFULLY!");
