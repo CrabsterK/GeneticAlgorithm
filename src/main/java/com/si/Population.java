@@ -75,14 +75,14 @@ public class Population {
         return best;
     }
 
-    public double getAvgStdDeviationin(int [][] matrixDist, int [][] matrixFlow, int avg){
+    public double getAvgStdDeviationin(int size, int [][] matrixDist, int [][] matrixFlow, int avg){
         double sum = 0;
         double sumN = 0;
         double result = 0;
-        for(int i = 1; i < POP_SIZE; i++){
+        for(int i = 1; i < size; i++){
             sum += (population.get(i).checkValue(matrixDist, matrixFlow)-avg) * (population.get(i).checkValue(matrixDist, matrixFlow)-avg);
         }
-        sumN = sum/POP_SIZE;
+        sumN = sum/size;
         result = Math.sqrt(sumN);
         return result;
     }
