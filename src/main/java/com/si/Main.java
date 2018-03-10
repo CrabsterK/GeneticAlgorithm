@@ -55,12 +55,18 @@ public class Main {
         }
 
 
+        //Greedy algorithm
+        /*final int PERSON_SIZE = id.getDimension();
+        GreedyAlgorithm greedy = new GreedyAlgorithm();
+        greedy.returnBest(POP_SIZE, PERSON_SIZE, matrixDist, matrixFlow);
+*/
+
         //INITIAL DATA FACTORY
         /*int bestVal = population.getBestValue(matrixDist, matrixFlow);
         int worstVal = population.getWorstValue(matrixDist, matrixFlow);
         int avgVal = population.getAverageValue(matrixDist, matrixFlow);
         data.addPopulationData(0, bestVal, worstVal, avgVal);
-        System.out.println("OS: " + population.getAvgStdDeviationin(matrixDist, matrixFlow, avgVal));
+        System.out.println("OS: " + population.getAvgStdDeviationin(POP_SIZE, matrixDist, matrixFlow, avgVal));
 */
 
         if(data.generateFile()){
