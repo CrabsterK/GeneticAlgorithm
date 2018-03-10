@@ -4,13 +4,20 @@ import java.util.Collections;
 
 public class GreedyAlgorithm {
 
-    public static Person returnBest(int popSize, int genotypeSize, int[][] distanceMatrix, int[][] flowsMatrix){
+    public static void returnBest(int popSize, int genotypeSize, int[][] distanceMatrix, int[][] flowsMatrix){
+        int bestVal = 0;
+        int avgVal = 0;
+        int sum = 0;
+        int numberOfPerson = 0;
+
         Population population = new Population(popSize, genotypeSize);
         Person person = new Person(population.createRandomGenotype());//osoba
         Person tmpPerson = new Person();//kopia osoby
         for(int i = 0; i < person.getGenotype().size()-1; i++) {
+            sum += person.checkValue(distanceMatrix, flowsMatrix);
             ArrayList emptyList = new ArrayList();
             ArrayList copyGenotyp = new ArrayList();
+
             for(int j=0; j < person.getGenotype().size(); j++) {
                 copyGenotyp.add(person.getGenotype().get(j));
             }
@@ -23,7 +30,14 @@ public class GreedyAlgorithm {
                 i=0;	//OD NOWA SPRAWDZAM
             }
             tmpPerson.setGenotype(emptyList);
+            numberOfPerson++;
+            population.addPerson(person);
         }
-        return person;
+        bestVal = person.checkValue(distanceMatrix, flowsMatrix);
+        avgVal = sum/numberOfPerson;
+       // System.out.println("Best: " + bestVal);
+        System.out.println("AVG: " + avgVal);
+       // System.out.println("numberOfPerson: " + numberOfPerson);
+        System.out.println("OS: " + population.getAvgStdDeviationin(numberOfPerson, distanceMatrix, flowsMatrix, avgVal));
     }
 }
