@@ -14,7 +14,7 @@ public class Person {
     public Person(List genotype) {
         this.genotype = genotype;
     }
-    
+
     public void setGenotype(List<Integer> genotype) {
         this.genotype = genotype;
     }
